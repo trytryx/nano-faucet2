@@ -13,18 +13,6 @@ module.exports = {
         .status(400);
     }
 
-    const addressBalance = await erc20wallet.getBalanceOfAddress(address);
-
-    if (addressBalance >= config.ERC20_PAYOUT) {
-      console.log({ addressBalance });
-      return res
-        .json({
-          error: 'You already have enough tokens!',
-          balance: addressBalance,
-          input: address
-        })
-        .status(400);
-    }
 
     logger(
       `REQUESTED ERC20: ${config.ERC20_PAYOUT} ${
